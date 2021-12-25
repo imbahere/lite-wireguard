@@ -413,7 +413,7 @@ function uninstallWg() {
 	fi
 }
 
-wget -q -O /usr/local/bin/menu 'https://raw.githubusercontent.com/imbahere/default/menu' && \
+wget -q -O /usr/local/bin/menu 'https://raw.githubusercontent.com/imbahere/lite-wireguard/default/menu' && \
 chmod +x /usr/local/bin/menu
 
 # Check for root, virt, OS...
