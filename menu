@@ -1,0 +1,56 @@
+#!/bin/bash
+clear
+
+if [[ "$EUID" -ne 0 ]]; then
+    echo -e "${ERROR} RALAT ${RESET}${TEXT} Script need to be run as root! ${RESET}" && exit 1
+fi
+
+TEXT='\033[30;107;2m'
+INFO='\033[97;44m'
+WARNING='\033[97;43m'
+ERROR='\033[97;41m'
+SUCCESS='\033[97;42m'
+
+GREEN='\033[92m'
+YELLOW='\033[93m'
+RESET='\033[0m'
+
+echo
+echo -e "${TEXT} WIREGUARD                                                  ${RESET}"
+echo
+echo -e "[1] ${GREEN}Add Wireguard VPN Account${RESET}" # ERROR
+echo -e "[2] ${GREEN}Delete Wireguard VPN Account${RESET}" # ERROR
+echo -e "[3] ${GREEN}Uninstall Wireguard${RESET}" # ERROR
+echo -e "[4] ${GREEN}Exit${RESET}" # ERROR
+echo
+echo -e "${TEXT} ---------------------------------------------------------- ${RESET}"
+echo -e "${TEXT} Dicipta oleh Akmal, 				            ${RESET}"
+echo -e "${TEXT} Hak Cipta 2022, Hak Cipta Terpelihara.                     ${RESET}"
+echo -e "${TEXT} ========================================================== ${RESET}"
+echo
+
+read -p "Please Choose One: " _choice
+case $_choice in
+# wireguard
+    1|
+        newClient
+    ;;
+    2|
+        revokeClient
+    ;;
+    3|
+        uninstallWg
+    ;;
+    4|
+        exit 0
+    ;;
+    00|
+        clear; exit 0
+    ;;
+    * )
+        echo
+        echo -e "${ERROR} RALAT ${RESET}${TEXT} Pilihan tidak sah! ${RESET}"
+        echo
+        menu
+    ;;
+esac
